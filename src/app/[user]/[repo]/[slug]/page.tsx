@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <ThemeLoader theme={themeClass} />
-      <div className="min-h-screen bg-background text-foreground flex flex-col font-sans selection:bg-primary selection:text-primary-foreground">
+      <div className={`min-h-screen font-pixel-body selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
         <BlogHeader 
           user={user} 
           repo={repo} 
@@ -151,7 +151,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           navLinks={navLinks} 
         />
 
-        <main className="flex-grow pt-24 px-6">
+        <main className="max-w-7xl mx-auto px-6 py-12 pt-32 lg:pt-40">
           <div className="container mx-auto max-w-4xl">
             <Button variant="ghost" asChild className="mb-8 pl-0 hover:bg-transparent hover:text-primary">
               <Link href={`/${user}/${repo}`}>← {t.backToList}</Link>
