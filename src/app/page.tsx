@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HomeNavInput } from '@/components/home-nav-input';
 
+export const runtime = 'edge';
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black font-pixel-body selection:bg-black selection:text-white pixel-bg-grid">
