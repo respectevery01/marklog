@@ -13,27 +13,6 @@ interface BlogSidebarRightProps {
 }
 
 export function BlogSidebarRight({ user, repo, featuredPost, lang }: BlogSidebarRightProps) {
-  const t = getTranslation(lang as any);
-  
-  if (!featuredPost) return null;
-
-  return (
-    <div className="lg:col-span-3 space-y-6">
-      <ScrollReveal direction="left" delay={100}>
-        <Card className="bg-primary text-primary-foreground border-none">
-          <CardHeader>
-            <Badge className="w-fit bg-background text-foreground hover:bg-background/90">{t.featured}</Badge>
-            <CardTitle className="mt-2 text-lg leading-tight">
-              <Link href={`/${user}/${repo}/${featuredPost.slug}`} className="hover:underline">
-                {featuredPost.title}
-              </Link>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm opacity-90">
-            {featuredPost.description.slice(0, 100)}...
-          </CardContent>
-        </Card>
-      </ScrollReveal>
-    </div>
-  );
+  // Sidebar cards removed as per request to move featured posts to top
+  return null;
 }

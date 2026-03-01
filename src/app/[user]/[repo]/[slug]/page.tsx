@@ -10,6 +10,8 @@ import type { BlogPost, BlogConfig } from '@/lib/types';
 import { getTranslation } from '@/lib/i18n';
 import { BlogHeader } from '@/components/blog/Header';
 import { BlogFooter } from '@/components/blog/Footer';
+import { RelatedPosts } from '@/components/RelatedPosts';
+import { fetchBlogFiles } from '@/lib/github';
 
 interface PageProps {
   params: Promise<{ user: string; repo: string; slug: string }>;
@@ -53,6 +55,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   let config: BlogConfig = { theme: 'light' };
   let post: BlogPost | null = null;
+  let allPosts: BlogPost[] = [];
   let error: string | null = null;
   let repoInfo: any = null;
   let isPage = false;
@@ -60,8 +63,14 @@ export default async function BlogPostPage({ params }: PageProps) {
   try {
     const configPromise = fetchBlogConfig(user, repo).catch(() => null);
     const repoPromise = fetchRepo(user, repo).catch(() => null);
+    // Fetch all files to get related posts
+    const filesPromise = fetchBlogFiles(user, repo).catch(() => []);
     
-    const [configResult, repoResult] = await Promise.all([configPromise, repoPromise]);
+    const [configResult, repoResult, filesResult] = await Promise.all([
+      configPromise, 
+      repoPromise,
+      filesPromise
+    ]);
     
     if (configResult) {
       config = configResult;
@@ -80,6 +89,27 @@ export default async function BlogPostPage({ params }: PageProps) {
       post = parseMarkdown(fileResult.content, slug);
     } else {
       error = 'ARTICLE_NOT_FOUND';
+    }
+
+    // Process all posts for related section
+    if (filesResult.length > 0) {
+      const fileContents = await Promise.all(
+        filesResult.map(async (file) => {
+          // We only need basic info for related posts, but we need content for metadata parsing
+          // This might be slow if there are many posts. 
+          // Optimization: fetch content only for a few random files?
+          // For now, let's try to fetch all to filter correctly.
+          try {
+            const response = await fetch(file.download_url);
+            const content = await response.text();
+            const slug = file.name.replace('.md', '');
+            return parseMarkdown(content, slug);
+          } catch {
+            return null;
+          }
+        })
+      );
+      allPosts = fileContents.filter((p): p is BlogPost => p !== null);
     }
 
   } catch (err: any) {
@@ -204,6 +234,16 @@ export default async function BlogPostPage({ params }: PageProps) {
                   <Link href={`/${user}/${repo}`}>{t.backToList}</Link>
                 </Button>
               </div>
+            )}
+
+            {!isPage && !error && allPosts.length > 0 && (
+              <RelatedPosts 
+                currentSlug={slug}
+                posts={allPosts}
+                user={user}
+                repo={repo}
+                lang={lang}
+              />
             )}
           </div>
         </main>

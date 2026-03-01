@@ -19,7 +19,7 @@ export function BlogSidebarLeft({ user, repo, config, categories, archives, lang
   const t = getTranslation(lang as any);
   
   return (
-    <div className="lg:col-span-3 space-y-6">
+    <div className="lg:col-span-3 space-y-6 sticky top-24">
       <ScrollReveal direction="right" delay={100}>
         <Card>
           <CardContent className="p-6 text-center">

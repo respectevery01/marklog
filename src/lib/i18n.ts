@@ -18,6 +18,7 @@ export const translations = {
     publishedOn: 'Published on',
     poweredBy: 'Powered by',
     allRightsReserved: 'All rights reserved.',
+    maybeLikeMore: 'Maybe like more',
   },
   'zh-cn': {
     backToHome: '返回首页',
@@ -38,6 +39,7 @@ export const translations = {
     publishedOn: '发布于',
     poweredBy: 'Powered by',
     allRightsReserved: '保留所有权利。',
+    maybeLikeMore: '猜你喜欢',
   }
 };
 

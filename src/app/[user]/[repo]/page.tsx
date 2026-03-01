@@ -76,9 +76,13 @@ export default async function BlogListPage({ params }: PageProps) {
       })
     );
 
-    posts = fileContents.sort((a, b) => 
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    posts = fileContents.sort((a, b) => {
+      // Sort by featured first
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      // Then sort by date descending
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 
   } catch (err: any) {
     console.error('Blog fetch error:', err);
@@ -97,100 +101,85 @@ export default async function BlogListPage({ params }: PageProps) {
   const lang = config.language || 'en';
   const t = getTranslation(lang);
 
-  if (error) {
-    if (error === 'REPO_NOT_FOUND') error = t.repoNotFound;
-    else if (error === 'BLOG_FOLDER_NOT_FOUND') error = t.blogFolderNotFound;
-    else error = t.tryAgain;
-  }
-
   // Default Nav if not provided
   const navLinks = config.nav || [
     { label: 'Home', url: `/${user}/${repo}` },
     { label: 'GitHub', url: repoInfo?.html_url || `https://github.com/${user}/${repo}` },
   ];
 
-  const featuredPost = posts.find(p => p.featured);
+  // Get categories and archives
   const categories = Array.from(new Set(posts.map(p => p.category).filter(Boolean))) as string[];
   const archives = Array.from(new Set(posts.map(p => {
     const date = new Date(p.date);
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
   }))).sort().reverse();
 
-  return (
-    <>
-      <ThemeLoader theme={themeClass} />
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-primary-foreground">
-        <BlogHeader 
-          user={user} 
-          repo={repo} 
-          blogTitle={blogTitle} 
-          navLinks={navLinks} 
-        />
+  if (error) {
+    if (error === 'REPO_NOT_FOUND') error = t.repoNotFound;
+    else if (error === 'BLOG_FOLDER_NOT_FOUND') error = t.blogFolderNotFound;
+    else error = t.tryAgain;
+  }
 
-        <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+  return (
+    <div className={`min-h-screen font-pixel-body selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
+      <ThemeLoader theme={config.theme} />
+      
+      <BlogHeader 
+        title={blogTitle} 
+        description={blogDescription} 
+        user={user} 
+        repo={repo} 
+        theme={config.theme}
+        navLinks={navLinks}
+      />
+
+      <main className="max-w-7xl mx-auto px-6 py-12 pt-32 lg:pt-40">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Sidebar Left */}
+          <aside className="hidden lg:block w-64 space-y-8">
             <BlogSidebarLeft 
               user={user} 
               repo={repo} 
               config={config} 
-              categories={categories} 
-              archives={archives} 
+              categories={categories}
+              archives={archives}
               lang={lang}
             />
+          </aside>
 
-            {/* Center - Main Feed */}
-            <div className="lg:col-span-6 space-y-8">
-              {error ? (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{t.error}</CardTitle>
-                    <CardDescription>{error}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Button asChild>
-                      <Link href="/">{t.backToHome}</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ) : posts.length === 0 ? (
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{t.noPosts}</CardTitle>
-                    <CardDescription>{t.noPostsDesc}</CardDescription>
-                  </CardHeader>
-                </Card>
-              ) : (
-                posts.map((post, i) => (
-                  <PostCard 
-                    key={post.slug} 
-                    post={post} 
-                    user={user} 
-                    repo={repo} 
-                    index={i} 
-                    lang={lang}
-                  />
-                ))
-              )}
+          {/* Main Content */}
+          <div className="flex-1 space-y-12">
+            <div className="grid gap-8">
+              {posts.map((post, index) => (
+                <PostCard 
+                  key={post.slug} 
+                  post={post} 
+                  user={user} 
+                  repo={repo} 
+                  index={index}
+                  lang={lang}
+                />
+              ))}
             </div>
+          </div>
 
+          {/* Sidebar Right */}
+          <aside className="lg:w-80 space-y-8">
             <BlogSidebarRight 
               user={user} 
               repo={repo} 
-              featuredPost={featuredPost} 
+              config={config} 
               lang={lang}
             />
-          </div>
+          </aside>
         </div>
+      </main>
 
-        <BlogFooter 
-          user={user} 
-          blogTitle={blogTitle} 
-          description={blogDescription} 
-          config={config} 
-          lang={lang}
-        />
-      </div>
-    </>
+      <BlogFooter 
+        user={user} 
+        repo={repo} 
+        config={config} 
+      />
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { Star } from 'lucide-react';
 import { formatDate } from '@/lib/markdown';
 import type { BlogPost } from '@/lib/types';
 import { getTranslation } from '@/lib/i18n';
@@ -34,6 +35,12 @@ export function PostCard({ post, user, repo, index, lang }: PostCardProps) {
         )}
         <CardHeader>
           <div className="flex items-center gap-2 mb-3">
+            {post.featured && (
+              <Badge className="rounded-sm bg-yellow-500 hover:bg-yellow-600 text-white gap-1">
+                <Star className="w-3 h-3 fill-current" />
+                Featured
+              </Badge>
+            )}
             {post.category && (
               <Badge variant="secondary" className="rounded-sm">
                 <Link href={`/${user}/${repo}/category/${post.category}`} className="hover:underline">

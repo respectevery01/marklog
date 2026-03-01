@@ -17,6 +17,9 @@ const vt323 = VT323({
 export const metadata: Metadata = {
   title: "Marklog - GitHub Platform for Builders",
   description: "Visit marklog.xyz/[username]/[repo] to view your blog",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
