@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { HomeNav } from '@/components/home-nav';
 
 export default function ThemesPage() {
   const themes = [
@@ -50,34 +51,7 @@ export default function ThemesPage() {
   return (
     <div className="min-h-screen bg-white text-black font-pixel-body selection:bg-black selection:text-white pixel-bg-grid">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-black group-hover:bg-transparent group-hover:border-2 group-hover:border-black transition-all duration-0" />
-            <span className="text-xl font-bold font-pixel-title uppercase tracking-tighter">Marklog</span>
-          </Link>
-          <div className="hidden lg:flex items-center gap-8">
-            <Link href="/guide" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4">
-              Guide
-            </Link>
-            <Link href="/themes" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4">
-              Themes
-            </Link>
-            <Button asChild variant="ghost" size="sm" className="font-bold uppercase">
-              <Link href="https://github.com/respectevery01/marklog" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </Link>
-            </Button>
-          </div>
-          <button className="lg:hidden p-2 border-2 border-black hover:bg-black hover:text-white transition-colors" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-              <line x1="3" x2="21" y1="6" y2="6"></line>
-              <line x1="3" x2="21" y1="12" y2="12"></line>
-              <line x1="3" x2="21" y1="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </nav>
+      <HomeNav />
 
       <div className="max-w-7xl mx-auto px-6 py-8 max-w-6xl pt-32">
         {/* Hero */}

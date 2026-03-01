@@ -44,7 +44,7 @@ export function HomeNav() {
 
       {/* Mobile Nav Overlay */}
       <div className={cn(
-        "lg:hidden absolute top-full left-0 right-0 bg-white border-b-2 border-black transition-all duration-300 ease-in-out overflow-hidden",
+        "lg:hidden absolute top-full left-0 right-0 bg-white border-b-2 border-black transition-all duration-300 ease-in-out overflow-hidden shadow-lg",
         isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
       )}>
         <div className="flex flex-col p-6 space-y-4">
