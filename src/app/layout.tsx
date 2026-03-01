@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 
+export const runtime = 'edge';
+
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -15,8 +17,8 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Marklog - GitHub Blogger Platform",
-  description: "Visit marklog.xyz/[username]/[repo] view blog",
+  title: "Marklog - GitHub 博客平台",
+  description: "访问 marklog.xyz/[用户名]/[仓库名] 查看博客",
 };
 
 export default function RootLayout({
