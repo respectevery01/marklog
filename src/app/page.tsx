@@ -5,8 +5,6 @@ import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { HomeNavInput } from '@/components/home-nav-input';
 
-export const runtime = 'edge';
-
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black font-pixel-body selection:bg-black selection:text-white pixel-bg-grid">
@@ -209,7 +207,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-            <p>© 2024 Marklog. No rights reserved.</p>
+            <p>© 2026 Marklog. All rights reserved.</p>
             <p>Designed for builders.</p>
           </div>
         </div>

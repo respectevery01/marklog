@@ -296,7 +296,7 @@ analytics:
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-            <p>© 2024 Marklog. No rights reserved.</p>
+            <p>© 2026 Marklog. All rights reserved.</p>
             <p>Designed for builders.</p>
           </div>
         </div>

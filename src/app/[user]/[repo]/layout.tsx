@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { getFaviconUrl, fetchBlogConfig } from '@/lib/github';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 
-export const runtime = 'edge';
-
 export async function generateMetadata({ params }: { params: Promise<{ user: string; repo: string }> }): Promise<Metadata> {
   const { user, repo } = await params;
   const iconUrl = await getFaviconUrl(user, repo);

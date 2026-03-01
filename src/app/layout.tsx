@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Space_Mono, VT323 } from "next/font/google";
 import "./globals.css";
 
-export const runtime = 'edge';
-
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],

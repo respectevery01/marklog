@@ -113,6 +113,7 @@ export async function fetchFileContent(user: string, repo: string, path: string)
     return await response.text();
   } catch (e) {
     console.error('Error fetching file content:', e);
+    // Return empty string instead of throwing to avoid crashing the whole page
     return '';
   }
 }

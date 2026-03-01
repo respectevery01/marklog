@@ -11,8 +11,6 @@ import { getTranslation } from '@/lib/i18n';
 import { BlogHeader } from '@/components/blog/Header';
 import { BlogFooter } from '@/components/blog/Footer';
 
-export const runtime = 'edge';
-
 interface PageProps {
   params: Promise<{ user: string; repo: string; slug: string }>;
 }

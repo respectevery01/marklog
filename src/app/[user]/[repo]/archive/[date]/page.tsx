@@ -12,8 +12,6 @@ import { BlogSidebarLeft } from '@/components/blog/SidebarLeft';
 import { BlogSidebarRight } from '@/components/blog/SidebarRight';
 import { PostCard } from '@/components/PostCard';
 
-export const runtime = 'edge';
-
 interface PageProps {
   params: Promise<{ user: string; repo: string; date: string }>;
 }
