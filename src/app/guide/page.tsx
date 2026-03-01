@@ -78,7 +78,7 @@ Your content here...`,
               Themes
             </Link>
             <Button asChild variant="ghost" size="sm" className="font-bold uppercase">
-              <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://github.com/respectevery01/marklog" target="_blank" rel="noopener noreferrer">
                 GitHub
               </Link>
             </Button>
@@ -251,8 +251,8 @@ analytics:
             <div>
               <h4 className="font-bold uppercase mb-6 border-b border-white/20 pb-2">Social</h4>
               <ul className="space-y-3 text-sm">
-                <li><Link href="https://github.com" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">GitHub</Link></li>
-                <li><Link href="https://twitter.com" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">Twitter</Link></li>
+                <li><Link href="https://github.com/respectevery01/marklog" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">GitHub</Link></li>
+                <li><Link href="https://twitter.com/jaskdon" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">Twitter</Link></li>
               </ul>
             </div>
           </div>
