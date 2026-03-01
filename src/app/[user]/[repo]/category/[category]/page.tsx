@@ -187,7 +187,7 @@ export default async function CategoryPage({ params }: PageProps) {
             <BlogSidebarRight 
               user={user} 
               repo={repo} 
-              featuredPost={featuredPost} 
+              config={config} 
               lang={lang}
             />
           </div>
@@ -195,10 +195,8 @@ export default async function CategoryPage({ params }: PageProps) {
 
         <BlogFooter 
           user={user} 
-          blogTitle={blogTitle} 
-          description={blogDescription} 
+          repo={repo} 
           config={config} 
-          lang={lang}
         />
       </div>
     </>

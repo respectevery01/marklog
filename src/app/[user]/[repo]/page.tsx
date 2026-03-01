@@ -122,14 +122,12 @@ export default async function BlogListPage({ params }: PageProps) {
 
   return (
     <div className={`min-h-screen font-pixel-body selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
-      <ThemeLoader theme={config.theme} />
+      <ThemeLoader theme={config.theme || 'light'} />
       
       <BlogHeader 
-        title={blogTitle} 
-        description={blogDescription} 
+        blogTitle={blogTitle} 
         user={user} 
         repo={repo} 
-        theme={config.theme}
         navLinks={navLinks}
       />
 

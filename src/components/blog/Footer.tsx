@@ -4,14 +4,16 @@ import type { BlogConfig } from '@/lib/types';
 
 interface BlogFooterProps {
   user: string;
-  blogTitle: string;
-  description: string;
+  repo: string;
   config: BlogConfig;
-  lang: string;
 }
 
-export function BlogFooter({ user, blogTitle, description, config, lang }: BlogFooterProps) {
+export function BlogFooter({ user, repo, config }: BlogFooterProps) {
+  const lang = config.language || 'en';
   const t = getTranslation(lang as any);
+  
+  const blogTitle = config.title || repo;
+  const description = config.description || '';
   
   return (
     <footer className="border-t border-border mt-20 py-12 bg-muted/30">

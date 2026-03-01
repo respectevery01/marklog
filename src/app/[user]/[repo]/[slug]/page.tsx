@@ -250,10 +250,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         <BlogFooter 
           user={user} 
-          blogTitle={blogTitle} 
-          description={blogDescription} 
+          repo={repo} 
           config={config} 
-          lang={lang}
         />
       </div>
     </>
