@@ -31,7 +31,7 @@ export function RelatedPosts({ currentSlug, posts, user, repo, lang }: RelatedPo
 
   return (
     <section className="mt-16 pt-8 border-t-2 border-black">
-      <h2 className="text-2xl font-bold font-pixel-title uppercase mb-8">{t.maybeLikeMore || 'Maybe like more'}</h2>
+      <h2 className="text-2xl font-bold uppercase mb-8">{t.maybeLikeMore || 'Maybe like more'}</h2>
       <div className="grid md:grid-cols-2 gap-6">
         {randomPosts.map((post, index) => (
           <ScrollReveal key={post.slug} delay={index * 100} direction="up">

@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className={`${spaceMono.variable} ${vt323.variable} font-pixel-body antialiased`}>
+      <body className={`${spaceMono.variable} ${vt323.variable} antialiased`}>
         {children}
       </body>
     </html>

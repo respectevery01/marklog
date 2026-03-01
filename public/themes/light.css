@@ -1,11 +1,11 @@
 :root {
-  --background: 0 0% 100%;
+  --background: 0 0% 98%;
   --foreground: 240 10% 3.9%;
   --card: 0 0% 100%;
   --card-foreground: 240 10% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
+  --primary: 221 83% 53%; /* Vivid Blue */
   --primary-foreground: 0 0% 98%;
   --secondary: 240 4.8% 95.9%;
   --secondary-foreground: 240 5.9% 10%;
@@ -17,10 +17,48 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
-  --ring: 240 5.9% 10%;
-  --radius: 0.5rem;
+  --ring: 221 83% 53%;
+  --radius: 0.75rem; /* More rounded */
 }
 
+/* Modern Clean Adjustments */
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.015em;
+  line-height: 1.6;
+}
+
+/* Remove borders, use shadows for light theme */
 .border, .border-l, .border-r, .border-t, .border-b {
-  border-width: 1px !important;
+  border-width: 0px !important;
+}
+
+/* Soft shadows for cards */
+.card, .bg-card, .border {
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Rounded buttons */
+button, .button {
+  border-radius: 9999px !important; /* Pill shape */
+  font-weight: 600;
+  box-shadow: none !important; /* Override pixel theme shadow if any leaked */
+}
+
+/* Remove grid background if it leaks */
+.pixel-bg-grid {
+  background-image: none !important;
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.05em;
 }

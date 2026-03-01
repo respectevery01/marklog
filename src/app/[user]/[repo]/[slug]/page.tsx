@@ -143,7 +143,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <>
       <ThemeLoader theme={themeClass} />
-      <div className={`min-h-screen font-pixel-body selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
+      <div className={`min-h-screen selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
         <BlogHeader 
           user={user} 
           repo={repo} 
@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </div>
                   )}
                   
-                  <h1 className={`font-bold mb-4 ${isPage ? 'text-4xl font-pixel-title uppercase' : 'text-4xl md:text-5xl leading-tight'}`}>
+                  <h1 className={`font-bold mb-4 ${isPage ? 'text-4xl uppercase' : 'text-4xl md:text-5xl leading-tight'}`}>
                     {post.title}
                   </h1>
                   
@@ -214,9 +214,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <div 
                   className={`prose prose-lg dark:prose-invert max-w-none 
                     prose-img:rounded-md prose-img:border-2 prose-img:border-border 
-                    prose-headings:font-bold prose-headings:font-pixel-title
+                    prose-headings:font-bold 
                     prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                    ${isPage ? 'prose-p:text-justify font-pixel-body' : ''}`} 
+                    ${isPage ? 'prose-p:text-justify' : ''}`} 
                   dangerouslySetInnerHTML={{ __html: post.content }} 
                 />
                 

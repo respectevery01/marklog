@@ -23,8 +23,19 @@
 }
 
 /* Custom Ghibli styles */
+body {
+  font-family: 'Georgia', 'Cambria', 'Times New Roman', Times, serif; /* Organic Serif Font */
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  line-height: 1.7; /* Relaxed reading */
+}
+
+/* Soft, hand-drawn feel borders */
 .border, .border-l, .border-r, .border-t, .border-b {
   border-width: 2px !important;
+  border-style: solid !important;
+  border-color: #d4c9b8 !important;
+  border-radius: var(--radius) !important;
 }
 
 .ghibli-texture {

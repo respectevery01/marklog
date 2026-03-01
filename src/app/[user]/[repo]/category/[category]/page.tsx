@@ -122,19 +122,20 @@ export default async function CategoryPage({ params }: PageProps) {
   const featuredPost = posts.find(p => p.featured); // Still show global featured post
 
   return (
-    <>
+    <div className={`min-h-screen selection:bg-black selection:text-white pixel-bg-grid ${themeClass}`}>
       <ThemeLoader theme={themeClass} />
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-primary-foreground">
-        <BlogHeader 
-          user={user} 
-          repo={repo} 
-          blogTitle={blogTitle} 
-          navLinks={navLinks} 
-        />
+      
+      <BlogHeader 
+        user={user} 
+        repo={repo} 
+        blogTitle={blogTitle} 
+        navLinks={navLinks} 
+      />
 
-        <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+      <main className="max-w-7xl mx-auto px-6 py-12 pt-32 lg:pt-40">
+        <div className="flex flex-col lg:flex-row gap-12">
+          {/* Sidebar Left */}
+          <aside className="lg:block w-full lg:w-64 space-y-8 order-1 lg:order-none">
             <BlogSidebarLeft 
               user={user} 
               repo={repo} 
@@ -143,14 +144,16 @@ export default async function CategoryPage({ params }: PageProps) {
               archives={archives} 
               lang={lang}
             />
+          </aside>
 
-            {/* Center - Main Feed */}
-            <div className="lg:col-span-6 space-y-8">
-              <div className="flex items-center justify-between mb-4">
-                 <h2 className="text-2xl font-bold">{t.categories}: {decodedCategory}</h2>
-                 <span className="text-muted-foreground">{filteredPosts.length} posts</span>
-              </div>
+          {/* Main Content */}
+          <div className="flex-1 space-y-12 order-2 lg:order-none">
+            <div className="flex items-center justify-between mb-4">
+               <h2 className="text-2xl font-bold uppercase tracking-wider">{t.categories}: {decodedCategory}</h2>
+               <span className="text-muted-foreground">{filteredPosts.length} posts</span>
+            </div>
 
+            <div className="grid gap-8">
               {error ? (
                 <Card>
                   <CardHeader>
@@ -159,7 +162,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   </CardHeader>
                   <CardContent>
                     <Button asChild>
-                      <Link href="/">{t.backToHome}</Link>
+                      <Link href={`/${user}/${repo}`}>{t.backToList}</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -183,22 +186,25 @@ export default async function CategoryPage({ params }: PageProps) {
                 ))
               )}
             </div>
+          </div>
 
+          {/* Sidebar Right */}
+          <aside className="lg:w-80 space-y-8 order-3 lg:order-none hidden lg:block">
             <BlogSidebarRight 
               user={user} 
               repo={repo} 
               config={config} 
               lang={lang}
             />
-          </div>
+          </aside>
         </div>
+      </main>
 
-        <BlogFooter 
-          user={user} 
-          repo={repo} 
-          config={config} 
-        />
-      </div>
-    </>
+      <BlogFooter 
+        user={user} 
+        repo={repo} 
+        config={config} 
+      />
+    </div>
   );
 }
