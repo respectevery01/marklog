@@ -22,7 +22,7 @@ export function HomeNavInput() {
     <form onSubmit={handleSubmit} className="relative max-w-md w-full mx-auto lg:mx-0">
       <div className="relative flex items-center">
         <span className="absolute left-4 text-gray-500 font-mono select-none">
-          marklog.site/
+          marklog.xyz/
         </span>
         <input
           type="text"

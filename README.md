@@ -20,7 +20,7 @@ Marklog allows you to turn any GitHub repository into a beautiful, fast, and res
 
 ### Method 1: Use Any Repository
 
-1. Go to [marklog.site](https://marklog.site) (or your deployment URL).
+1. Go to [marklog.xyz](https://marklog.xyz) (or your deployment URL).
 2. Enter your `username/repository` in the input field.
 3. Start reading!
 
@@ -42,7 +42,7 @@ Marklog allows you to turn any GitHub repository into a beautiful, fast, and res
    
    This is my first post!
    ```
-4. Visit `marklog.site/your-username/my-blog`.
+4. Visit `marklog.xyz/your-username/my-blog`.
 
 ## ⚙️ Configuration
 

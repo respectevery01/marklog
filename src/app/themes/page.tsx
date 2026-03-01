@@ -63,9 +63,6 @@ export default function ThemesPage() {
             <Link href="/themes" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4">
               Themes
             </Link>
-            <Link href="/about" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4">
-              About
-            </Link>
             <Button asChild variant="ghost" size="sm" className="font-bold uppercase">
               <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
                 GitHub
@@ -288,7 +285,6 @@ analytics:
               <ul className="space-y-3 text-sm">
                 <li><Link href="/guide" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">Guide</Link></li>
                 <li><Link href="/themes" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">Themes</Link></li>
-                <li><Link href="/about" className="hover:text-gray-300 hover:underline decoration-2 underline-offset-4">About</Link></li>
               </ul>
             </div>
             <div>
