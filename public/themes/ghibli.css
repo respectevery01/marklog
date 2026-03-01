@@ -1,0 +1,45 @@
+:root {
+  /* Ghibli / Matsu Theme Colors */
+  --background: 40 33% 93%; /* Warm beige #f5f0e6 */
+  --foreground: 155 24% 23%; /* Deep forest green #2d4a3e */
+  --card: 40 33% 93%;
+  --card-foreground: 155 24% 23%;
+  --popover: 40 33% 93%;
+  --popover-foreground: 155 24% 23%;
+  --primary: 155 24% 23%;
+  --primary-foreground: 40 33% 93%;
+  --secondary: 35 30% 86%; /* Slightly darker beige #e8dfd0 */
+  --secondary-foreground: 155 24% 23%;
+  --muted: 35 30% 86%;
+  --muted-foreground: 155 15% 40%;
+  --accent: 35 30% 86%;
+  --accent-foreground: 155 24% 23%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 40 33% 93%;
+  --border: 35 20% 78%; /* #d4c9b8 */
+  --input: 35 20% 78%;
+  --ring: 155 24% 23%;
+  --radius: 0.625rem;
+}
+
+/* Custom Ghibli styles */
+.border, .border-l, .border-r, .border-t, .border-b {
+  border-width: 2px !important;
+}
+
+.ghibli-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Rounded corners for Ghibli feel */
+.rounded-full, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-md, .rounded-sm, .rounded {
+  border-radius: var(--radius) !important;
+}

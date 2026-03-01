@@ -1,0 +1,72 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 260 100% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 90%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 0%;
+  --input: 0 0% 0%;
+  --ring: 0 0% 0%;
+  --radius: 0px;
+}
+
+/* Global pixel art adjustments */
+* {
+  image-rendering: pixelated;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.border, .border-t, .border-b, .border-l, .border-r {
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: black !important;
+}
+
+.rounded-full, .rounded-2xl, .rounded-xl, .rounded-lg, .rounded-md, .rounded-sm, .rounded {
+  border-radius: 0 !important;
+}
+
+/* Button pixel styles */
+button, .button {
+  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  transition: all 0.1s;
+}
+
+button:active, .button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+}
+
+/* Card pixel styles */
+.card, .bg-card {
+  border: 2px solid black;
+  box-shadow: 8px 8px 0px 0px rgba(0,0,0,0.1);
+}
+
+.pixel-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
