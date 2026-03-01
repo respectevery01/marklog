@@ -15,8 +15,8 @@ const vt323 = VT323({
 });
 
 export const metadata: Metadata = {
-  title: "Marklog - GitHub 博客平台",
-  description: "访问 marklog.xyz/[用户名]/[仓库名] 查看博客",
+  title: "Marklog - GitHub Platform for Builders",
+  description: "Visit marklog.xyz/[username]/[repo] to view your blog",
 };
 
 export default function RootLayout({
