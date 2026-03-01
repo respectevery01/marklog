@@ -10,7 +10,7 @@ const headers = {
 export async function fetchRepo(user: string, repo: string): Promise<GitHubRepo> {
   const response = await fetch(`${GITHUB_API_BASE}/repos/${user}/${repo}`, { 
     headers,
-    next: { revalidate: 3600 } // Cache for 1 hour to reduce rate limits
+    next: { revalidate: 60 } // Cache for 1 minute
   });
   
   if (!response.ok) {
@@ -26,7 +26,7 @@ export async function fetchRepo(user: string, repo: string): Promise<GitHubRepo>
 export async function fetchRepoTree(user: string, repo: string, branch: string = 'main'): Promise<GitHubTree> {
   const response = await fetch(`${GITHUB_API_BASE}/repos/${user}/${repo}/git/trees/${branch}?recursive=1`, {
     headers,
-    next: { revalidate: 3600 }
+    next: { revalidate: 60 }
   });
 
   if (!response.ok) {
