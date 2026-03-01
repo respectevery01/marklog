@@ -36,7 +36,7 @@ export const translations = {
     articleNotFound: '文章不存在',
     author: '作者',
     publishedOn: '发布于',
-    poweredBy: '由',
+    poweredBy: 'Powered by',
     allRightsReserved: '保留所有权利。',
   }
 };

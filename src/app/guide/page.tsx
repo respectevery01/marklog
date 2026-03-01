@@ -58,6 +58,7 @@ Your content here...`,
     { name: 'theme', description: 'Theme: light | dark | ghibli | pixel' },
     { name: 'show_toc', description: 'Show table of contents on posts. true or false' },
     { name: 'show_repo_link', description: 'Show "View on GitHub" link. true or false' },
+    { name: 'analytics', description: 'Google Analytics ID. Example: analytics: { google: "G-XXXXXXXXXX" }' },
   ];
 
   return (
@@ -181,7 +182,9 @@ Your content here...`,
 description: My personal blog
 theme: pixel  # light | dark | ghibli | pixel
 show_toc: true
-show_repo_link: true`}
+show_repo_link: true
+analytics:
+  google: "G-XXXXXXXXXX"`}
                 </pre>
               </div>
               <div className="divide-y-2 divide-black">

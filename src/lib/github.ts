@@ -46,9 +46,15 @@ export async function fetchBlogFiles(user: string, repo: string): Promise<GitHub
     const tree = await fetchRepoTree(user, repo, branch);
     
     // Filter for files in blog/ directory and ending with .md
+    // Exclude files in blog/page/ directory
     // Map them to GitHubFile structure (simplified)
     return tree.tree
-      .filter(item => item.path.startsWith('blog/') && item.path.endsWith('.md') && item.type === 'blob')
+      .filter(item => 
+        item.path.startsWith('blog/') && 
+        !item.path.startsWith('blog/page/') &&
+        item.path.endsWith('.md') && 
+        item.type === 'blob'
+      )
       .map(item => ({
         name: item.path.split('/').pop() || '',
         path: item.path,
@@ -162,3 +168,33 @@ export async function fetchBlogConfig(user: string, repo: string): Promise<BlogC
     return null;
   }
 }
+
+export async function getFaviconUrl(user: string, repo: string): Promise<string | null> {
+  try {
+    const repoInfo = await fetchRepo(user, repo);
+    const branch = repoInfo.default_branch || 'main';
+    
+    // Check for favicon files in root
+    const tree = await fetchRepoTree(user, repo, branch);
+    
+    const faviconFile = tree.tree.find(item => 
+      ['favicon.png', 'favicon.jpg', 'favicon.jpeg', 'favicon.svg', 'favicon.ico'].includes(item.path.toLowerCase())
+    );
+    
+    if (faviconFile) {
+      return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${faviconFile.path}`;
+    }
+    
+    // Check blog config
+    const config = await fetchBlogConfig(user, repo);
+    if (config?.author?.avatar) {
+      return config.author.avatar;
+    }
+    
+    return null;
+  } catch (e) {
+    console.error('Error fetching favicon:', e);
+    return null;
+  }
+}
+

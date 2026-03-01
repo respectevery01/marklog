@@ -19,6 +19,9 @@ export interface BlogConfig {
   }[];
   language?: 'en' | 'zh-cn';
   footer?: string;
+  analytics?: {
+    google?: string;
+  };
 }
 
 export interface BlogPost {

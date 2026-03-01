@@ -112,7 +112,9 @@ export default function ThemesPage() {
 description: "Thoughts on code and life"
 theme: "pixel" # Try: light, dark, ghibli, pixel
 show_toc: true
-show_repo_link: true`}
+show_repo_link: true
+analytics:
+  google: "G-XXXXXXXXXX"`}
               </pre>
             </CardContent>
           </Card>

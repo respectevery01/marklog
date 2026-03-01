@@ -35,8 +35,9 @@ export async function generateMetadata({ params }: PageProps) {
     const fileResult = await findFileInRepo(user, repo, slug);
     
     if (fileResult) {
-      const { data } = await import('gray-matter').then(m => m.default(fileResult.content));
-      if (data.title) postTitle = data.title;
+      const { parseMarkdown } = await import('@/lib/markdown');
+      const post = parseMarkdown(fileResult.content, slug);
+      if (post.title) postTitle = post.title;
     }
   } catch (e) {
     // ignore
@@ -189,12 +190,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                   dangerouslySetInnerHTML={{ __html: post.content }} 
                 />
                 
-                <footer className="mt-12 pt-8 border-t border-border">
+                <div className="mt-12 pt-8">
                    {/* Tags removed as per request */}
-                  <Button asChild variant="outline" className="mt-4">
-                    <Link href={`/${user}/${repo}`}>{t.backToList}</Link>
+                  <Button asChild variant="ghost" className="pl-0 hover:bg-transparent hover:text-primary">
+                    <Link href={`/${user}/${repo}`}>← {t.backToList}</Link>
                   </Button>
-                </footer>
+                </div>
               </article>
             ) : (
               <div className="text-center py-12">

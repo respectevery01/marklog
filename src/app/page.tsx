@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { HomeNavInput } from '@/components/home-nav-input';
 
 export default function HomePage() {
   return (
@@ -64,17 +65,16 @@ export default function HomePage() {
                     No database. No CMS. Just you, your text editor, and your git repository. The purest way to blog.
                   </p>
                 </ScrollReveal>
-                <ScrollReveal direction="left" delay={200} className="flex flex-col sm:flex-row gap-6">
-                  <Button asChild size="lg" className="font-pixel-title text-sm h-14 px-8">
-                    <Link href="/guide">
-                      START WRITING
+                <ScrollReveal direction="left" delay={200} className="flex flex-col gap-6">
+                  <div className="max-w-md w-full">
+                    <HomeNavInput />
+                  </div>
+                  <div className="flex items-center gap-4 text-sm font-medium text-gray-500">
+                    <span>Try:</span>
+                    <Link href="/respectevery01/marklog-blog" className="text-black underline decoration-2 underline-offset-4 hover:text-gray-600 transition-colors">
+                      demo/blog
                     </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="font-pixel-title text-sm h-14 px-8">
-                    <Link href="/themes">
-                      EXPLORE THEMES
-                    </Link>
-                  </Button>
+                  </div>
                 </ScrollReveal>
               </div>
               <ScrollReveal direction="right" delay={200} className="relative aspect-square lg:aspect-auto lg:h-[640px] border-2 border-black bg-gray-50 p-6 shadow-pixel-lg">
