@@ -94,8 +94,12 @@ export async function fetchFileContent(user: string, repo: string, path: string)
     const branch = repoInfo.default_branch || 'main';
     const rawUrl = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
     
+    // In Edge runtime, fetch might need explicit User-Agent
     const response = await fetch(rawUrl, {
-      next: { revalidate: 60 }
+      next: { revalidate: 60 },
+      headers: {
+        'User-Agent': 'Marklog-Blog'
+      }
     });
 
     if (!response.ok) {
