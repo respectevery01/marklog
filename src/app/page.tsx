@@ -3,62 +3,36 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { HomeNav } from '@/components/home-nav';
 import { HomeNavInput } from '@/components/home-nav-input';
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black font-pixel-body selection:bg-black selection:text-white pixel-bg-grid">
       {/* Nav */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group p-2">
-            <div className="w-8 h-8 bg-black group-hover:bg-transparent group-hover:border-2 group-hover:border-black transition-all duration-0" />
-            <span className="text-xl font-bold font-pixel-title uppercase tracking-tighter">Marklog</span>
-          </Link>
-          <div className="hidden lg:flex items-center gap-8">
-            <Link href="/guide" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4 p-2">
-              Guide
-            </Link>
-            <Link href="/themes" className="text-sm font-bold uppercase hover:underline decoration-2 underline-offset-4 p-2">
-              Themes
-            </Link>
-            <Button asChild variant="ghost" size="sm" className="font-bold uppercase">
-              <Link href="https://github.com/respectevery01/marklog" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </Link>
-            </Button>
-          </div>
-          <button className="lg:hidden p-2 border-2 border-black hover:bg-black hover:text-white transition-colors" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square" strokeLinejoin="miter">
-              <line x1="3" x2="21" y1="6" y2="6"></line>
-              <line x1="3" x2="21" y1="12" y2="12"></line>
-              <line x1="3" x2="21" y1="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </nav>
+      <HomeNav />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="pt-40 pb-32 border-b-2 border-black bg-white/90 backdrop-blur-sm">
+        <section className="pt-28 md:pt-40 pb-20 md:pb-32 border-b-2 border-black bg-white/90 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-10">
+            <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+              <div className="space-y-8 md:space-y-10">
                 <ScrollReveal direction="left" className="inline-block">
                   <div className="px-3 py-1 border-2 border-black bg-gray-100 text-xs font-bold uppercase tracking-wider shadow-pixel-sm">
                     GitHub-powered blogging
                   </div>
                 </ScrollReveal>
                 <div className="space-y-4">
-                  <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-pixel-title leading-[1.2] tracking-normal">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-pixel-title leading-[1.2] tracking-normal">
                     <span className="block mb-2">WRITE IN</span>
-                    <span className="inline-block bg-black text-white px-4 py-1 mb-2">MARKDOWN</span>
+                    <span className="inline-block bg-black text-white px-3 py-1 md:px-4 md:py-1 mb-2">MARKDOWN</span>
                     <span className="block mb-2">STORE IN</span>
-                    <span className="inline-block bg-black text-white px-4 py-1">GITHUB</span>
+                    <span className="inline-block bg-black text-white px-3 py-1 md:px-4 md:py-1">GITHUB</span>
                   </h1>
                 </div>
                 <ScrollReveal direction="left" delay={100}>
-                  <p className="text-xl leading-relaxed max-w-xl border-l-4 border-black pl-6 py-1">
+                  <p className="text-lg md:text-xl leading-relaxed max-w-xl border-l-4 border-black pl-4 md:pl-6 py-1">
                     No database. No CMS. Just you, your text editor, and your git repository. The purest way to blog.
                   </p>
                 </ScrollReveal>
@@ -66,18 +40,18 @@ export default function HomePage() {
                   <div className="max-w-md w-full">
                     <HomeNavInput />
                   </div>
-                  <div className="flex items-center gap-4 text-sm font-medium text-gray-500">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-sm font-medium text-gray-500">
                     <span>Try:</span>
-                    <Link href="/respectevery01/marklog-blog" className="text-black underline decoration-2 underline-offset-4 hover:text-gray-600 transition-colors">
+                    <Link href="/respectevery01/marklog-blog" className="text-black underline decoration-2 underline-offset-4 hover:text-gray-600 transition-colors break-all sm:break-normal">
                       demo/blog
                     </Link>
                   </div>
                 </ScrollReveal>
               </div>
-              <ScrollReveal direction="right" delay={200} className="relative aspect-square lg:aspect-auto lg:h-[640px] border-2 border-black bg-gray-50 p-6 shadow-pixel-lg">
+              <ScrollReveal direction="right" delay={200} className="relative aspect-square lg:aspect-auto lg:h-[640px] border-2 border-black bg-gray-50 p-4 md:p-6 shadow-pixel-lg mt-8 lg:mt-0">
                 <div className="absolute inset-0 pattern-grid-lg opacity-10"></div>
-                <div className="relative h-full w-full border-2 border-black bg-white p-8 overflow-hidden flex flex-col shadow-pixel">
-                  <div className="flex items-center gap-3 border-b-2 border-black pb-6 mb-6">
+                <div className="relative h-full w-full border-2 border-black bg-white p-4 md:p-8 overflow-hidden flex flex-col shadow-pixel">
+                  <div className="flex items-center gap-3 border-b-2 border-black pb-4 md:pb-6 mb-4 md:mb-6">
                     <div className="w-4 h-4 bg-black"></div>
                     <div className="w-4 h-4 border-2 border-black"></div>
                     <div className="w-4 h-4 border-2 border-black"></div>

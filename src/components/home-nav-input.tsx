@@ -21,15 +21,18 @@ export function HomeNavInput() {
   return (
     <form onSubmit={handleSubmit} className="relative max-w-md w-full mx-auto lg:mx-0">
       <div className="relative flex items-center">
-        <span className="absolute left-4 text-gray-500 font-mono select-none">
+        <span className="absolute left-4 text-gray-500 font-mono select-none hidden sm:inline">
           marklog.xyz/
+        </span>
+        <span className="absolute left-4 text-gray-500 font-mono select-none sm:hidden">
+          /
         </span>
         <input
           type="text"
           value={path}
           onChange={(e) => setPath(e.target.value)}
           placeholder="username/repo"
-          className="w-full h-14 pl-32 pr-14 bg-gray-50 border-2 border-black rounded-full font-mono text-lg focus:outline-none focus:ring-0 focus:bg-white transition-colors"
+          className="w-full h-14 pl-8 sm:pl-32 pr-14 bg-gray-50 border-2 border-black rounded-full font-mono text-base sm:text-lg focus:outline-none focus:ring-0 focus:bg-white transition-colors"
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck="false"
