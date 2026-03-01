@@ -87,34 +87,30 @@ export async function fetchBlogFiles(user: string, repo: string): Promise<GitHub
 }
 
 export async function fetchFileContent(user: string, repo: string, path: string): Promise<string> {
-  // Use raw content URL if possible for better performance, but here we stick to API for consistency
-  // or use the contents API which gives base64
-  const response = await fetch(`${GITHUB_API_BASE}/repos/${user}/${repo}/contents/${path}`, { 
-    headers,
-    next: { revalidate: 60 }
-  });
-  
-  if (!response.ok) {
-    if (response.status === 404) {
-      return '';
+  // Use raw content URL to avoid base64 decoding issues and potential size limits
+  // Also avoids the need for atob/Buffer which might have issues in Edge
+  try {
+    const repoInfo = await fetchRepo(user, repo);
+    const branch = repoInfo.default_branch || 'main';
+    const rawUrl = `https://raw.githubusercontent.com/${user}/${repo}/${branch}/${path}`;
+    
+    const response = await fetch(rawUrl, {
+      next: { revalidate: 60 }
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return '';
+      }
+      // If raw fetch fails, we could fallback to API, but raw is generally more reliable for content
+      throw new Error('GITHUB_RAW_ERROR');
     }
-    throw new Error('GITHUB_API_ERROR');
+
+    return await response.text();
+  } catch (e) {
+    console.error('Error fetching file content:', e);
+    return '';
   }
-  
-  const data = await response.json();
-  
-  if (data.content) {
-    // Remove newlines before decoding base64
-    const cleanContent = data.content.replace(/\n/g, '');
-    // Handle potential unicode issues with atob
-    try {
-      return decodeURIComponent(escape(atob(cleanContent)));
-    } catch {
-      return atob(cleanContent);
-    }
-  }
-  
-  return '';
 }
 
 export async function findFileInRepo(user: string, repo: string, slug: string): Promise<{ content: string; path: string } | null> {
