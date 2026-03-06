@@ -5,8 +5,6 @@
   <p>Write in Markdown, store in GitHub, publish instantly.</p>
   
   <a href="https://www.producthunt.com/products/marklog-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-marklog-2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1091336&theme=light&t=1772798068137" alt="Marklog - WRITE IN MARKDOWN STORE IN GITHUB | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-  <br/><br/>
-  <a href='https://ko-fi.com/E1E51932I0' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Support me on Ko-fi' /></a>
 </div>
 
 Marklog allows you to turn any GitHub repository into a beautiful, fast, and responsive blog. No database, no CMS—just you, your text editor, and your git repository.
@@ -80,7 +78,8 @@ Marklog comes with beautiful built-in themes:
 - **Icons**: Lucide React
 - **Markdown**: Marked & Gray-matter
 - **Animations**: Framer Motion / Anime.js
-
+## Support me
+  <a href='https://ko-fi.com/E1E51932I0' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Support me on Ko-fi' /></a>
 ## 📝 License
 
 MIT © Marklog
