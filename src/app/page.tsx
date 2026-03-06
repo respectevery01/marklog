@@ -46,6 +46,24 @@ export default function HomePage() {
                       demo/blog
                     </Link>
                   </div>
+                  
+                  {/* Product Hunt Badge */}
+                  <div className="pt-2">
+                    <a 
+                      href="https://www.producthunt.com/products/marklog-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-marklog-2" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img 
+                        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1091336&theme=light&t=1772798068137" 
+                        alt="Marklog - WRITE IN MARKDOWN STORE IN GITHUB | Product Hunt" 
+                        style={{ width: '250px', height: '54px' }} 
+                        width="250" 
+                        height="54" 
+                      />
+                    </a>
+                  </div>
                 </ScrollReveal>
               </div>
               <ScrollReveal direction="right" delay={200} className="relative aspect-square lg:aspect-auto lg:h-[640px] border-2 border-black bg-gray-50 p-4 md:p-6 shadow-pixel-lg mt-8 lg:mt-0">
