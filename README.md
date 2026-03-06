@@ -80,6 +80,7 @@ Marklog comes with beautiful built-in themes:
 - **Animations**: Framer Motion / Anime.js
 ## Support me
   <a href='https://ko-fi.com/E1E51932I0' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Support me on Ko-fi' /></a>
+  
 ## 📝 License
 
 MIT © Marklog
